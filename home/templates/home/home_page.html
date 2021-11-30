@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block content %}
+{% image self.banner_image width-1920 as img %}
+<div class="row align-items-md-stretch  align-items-center" style="background-image: url('{{img.url}}'); background-size:cov; height:215px">
+    <div class="col-md-12">
+      <div class="h-50 p-5 text-white rounded-3">
+        <h2>{{self.banner_title}}</h2>
+        <h4">{{self.banner_subtitle | richtext}}</h4>
+        <p>{{self.banner_description}}</p>
+      </div>
+    </div>
+    <!-- Productos Destacados -->
+  <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-light rounded-3">
+          <h2>{{self.banner_title}}</h2>
+          <h4">{{self.banner_subtitle | richtext}}</h4>
+          <p>{{self.banner_description}}</p>
+          {% if self.banner_cta %}
+          <button class="btn btn-outline-light" type="button">Example button</button>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>{{self.banner_title}}</h2>
+          <h4">{{self.banner_subtitle | richtext}}</h4>
+          <p>{{self.banner_description}}</p>
+          {% if self.banner_cta %}
+          <button class="btn btn-outline-secondary" type="button">Example button</button>
+          {% endif %}
+        </div>
+      </div>
+  </div>
+
+  <div class="row align-items-md-stretch" style="padding:30px">
+    <div class="col-md-2">
+      <nav class='animated bounceInDown'>
+      	<ul>
+      		<li><a href='#profile'>Profile</a></li>
+      		<li><a href='#message'>Messages</a></li>
+      		<li class='sub-menu'><a href='#settings'>Settings<div class='fa fa-caret-down right'></div></a>
+      			<ul>
+      				<li><a href='#settings'>Account</a></li>
+      				<li><a href='#settings'>Profile</a></li>
+      				<li><a href='#settings'>Secruity & Privacy</a></li>
+      				<li><a href='#settings'>Password</a></li>
+      				<li><a href='#settings'>Notification</a></li>
+      			</ul>
+      		</li>
+      		<li class='sub-menu'><a href='#message'>Help<div class='fa fa-caret-down right'></div></a>
+      			<ul>
+      				<li><a href='#settings'>FAQ's</a></li>
+      				<li><a href='#settings'>Submit a Ticket</a></li>
+      				<li><a href='#settings'>Network Status</a></li>
+      			</ul>
+      		</li>
+      		<li><a href='#message'>Logout</a></li>
+      	</ul>
+      </nav>
+    </div>
+    <div class="col-md-10">
+      <div class="h-50 p-5 text-white rounded-3">
+        <h2>{{self.banner_title}}</h2>
+        <h4">{{self.banner_subtitle | richtext}}</h4>
+        <p>{{self.banner_description}}</p>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content %}
+{% block extra_js %}
+<script>
+      $('.sub-menu ul').hide();
+$(".sub-menu a").click(function () {
+  $(this).parent(".sub-menu").children("ul").slideToggle("100");
+  $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
+});
+ </script>
+{% endblock %}
