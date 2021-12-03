@@ -2,12 +2,12 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
-{% image self.banner_image width-1920 as img %}
+{% image self.banner_image fill-1920x820-c100  as img %}
 <div class="row align-items-md-stretch  align-items-center" style="background-image: url('{{img.url}}'); background-size:cov; height:215px">
     <div class="col-md-12">
       <div class="h-50 p-5 text-white rounded-3">
         <h2>{{self.banner_title}}</h2>
-        <h4">{{self.banner_subtitle | richtext}}</h4>
+        <h4>{{self.banner_subtitle | richtext}}</h4>
         <p>{{self.banner_description}}</p>
       </div>
     </div>
@@ -16,7 +16,7 @@
       <div class="col-md-6">
         <div class="h-100 p-5 text-white bg-light rounded-3">
           <h2>{{self.banner_title}}</h2>
-          <h4">{{self.banner_subtitle | richtext}}</h4>
+          <h4>{{self.banner_subtitle | richtext}}</h4>
           <p>{{self.banner_description}}</p>
           {% if self.banner_cta %}
           <button class="btn btn-outline-light" type="button">Example button</button>
@@ -26,7 +26,7 @@
       <div class="col-md-6">
         <div class="h-100 p-5 bg-light border rounded-3">
           <h2>{{self.banner_title}}</h2>
-          <h4">{{self.banner_subtitle | richtext}}</h4>
+          <h4>{{self.banner_subtitle | richtext}}</h4>
           <p>{{self.banner_description}}</p>
           {% if self.banner_cta %}
           <button class="btn btn-outline-secondary" type="button">Example button</button>
@@ -64,7 +64,7 @@
     <div class="col-md-10">
       <div class="h-50 p-5 text-white rounded-3">
         <h2>{{self.banner_title}}</h2>
-        <h4">{{self.banner_subtitle | richtext}}</h4>
+        <h4>{{self.banner_subtitle | richtext}}</h4>
         <p>{{self.banner_description}}</p>
       </div>
     </div>

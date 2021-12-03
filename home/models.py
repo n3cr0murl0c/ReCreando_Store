@@ -30,13 +30,6 @@ class HomePage(Page):
         on_delete=models.SET_NULL,#no se quiere que nada mas se borre
         related_name="+"
     )
-    search_image = models.ForeignKey(
-        Svg,
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,#no se quiere que nada mas se borre
-        related_name="+"
-    )
     banner_cta=models.ForeignKey(
         "wagtailcore.Page",
         null=True,
@@ -60,7 +53,6 @@ class HomePage(Page):
         FieldPanel("banner_subtitle"),
         FieldPanel("banner_description"),
         ImageChooserPanel("banner_image"),
-        SvgChooserPanel("search_image"),
         SvgChooserPanel("logo_image"),
         PageChooserPanel("banner_cta")
     ]

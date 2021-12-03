@@ -11,7 +11,7 @@ class productoAdmin(ModelAdmin):
     menu_order = 6
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display =("ID", "distribuidor","nombre_producto","descripcion_producto","precio_producto","imagen_producto",)
-    search_fields = ("ID", "distribuidor","nombre_producto","descripcion_producto","precio_producto",)
+    list_display =("ID", "nombre_producto","descripcion_producto","precio_producto","imagen_producto",)
+    search_fields = ("ID", "nombre_producto","descripcion_producto","precio_producto",)
 
 modeladmin_register(productoAdmin)

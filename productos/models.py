@@ -90,5 +90,5 @@ class producto(models.Model):
         related_name="+"
     )
     categorias_producto = models.ManyToManyField(categoria)
-    distribuidor= models.ForeignKey(distribuidor,on_delete=models.CASCADE, blank=True, null=True)
+    # distribuidor= models.ForeignKey(distribuidor,on_delete=models.CASCADE, blank=True, null=True)
 register_snippet(categoria)
