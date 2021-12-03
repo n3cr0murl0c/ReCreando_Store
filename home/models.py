@@ -21,7 +21,7 @@ class HomePage(Page):
         null=True,
         blank=True,
     )
-    
+
     banner_description=models.CharField(max_length=250, blank=False, null=True)
     banner_image = models.ForeignKey(
         "wagtailimages.Image",
@@ -51,17 +51,9 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name="+"
     )
-    # logo_image = models.ForeignKey(
-    #     "wagtailimages.Image",
-    #     null=True,
-    #     blank=False,
-    #     on_delete=models.SET_NULL,#no se quiere que nada mas se borre
-    #     related_name="+"
-    # )
+
     # Si se tiene un char field, se debe agregar eso en wagtail tambien
-
-
-    #Esto es wagtail, para agergar conteneido en la parte de admin
+    #Esto es wagtail, para agregar contenido en la parte de admin
     content_panels = Page.content_panels + [
         FieldPanel("page_title"),
         FieldPanel("banner_title"),
@@ -75,4 +67,4 @@ class HomePage(Page):
     #Metadata
     class Meta:
         verbose_name = "Home Page"
-        verbose_name_plural = "Home Pages"
+        verbose_name_plural = "Home Pages"        

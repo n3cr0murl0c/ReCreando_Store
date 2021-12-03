@@ -26,6 +26,10 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
+    'productos',
+    'flex',
+    'clientes',
+    'wagtail_svgmap',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -52,7 +56,7 @@ INSTALLED_APPS = [
     'wagtailsvg',
     'wagtail.contrib.modeladmin',
     'generic_chooser',
-    
+
 ]
 
 MIDDLEWARE = [

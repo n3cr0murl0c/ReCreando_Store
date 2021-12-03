@@ -1,0 +1,35 @@
+{% load wagtailimages_tags %}
+{# image rendition #}
+{% image self.image fill-400x200-c50 as prod_img %}
+{# codigo dentro del contenedor que engloba #}
+  <div class="flex p-5 ">
+    <div class="w-400 sm:max-w-sm lg:max-w-lg rounded overflow-hidden shadow-lg items-center">
+      <img class="w-400 sm:max-w-sm" src="{{prod_img.url}}" alt="">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">{{self.title}}</div>
+        <p class="text-gray-700 text-base">
+          {{self.text}}
+        </p>
+      </div>
+    <div class="px-5 pt-1 pb-2">
+      {% if self.boton_comprar%}
+        <a href="{{self.link}}" class="c-card block bg-white shadow-sm hover:shadow-sm rounded-sm overflow-hidden">
+        <button id="comprar_btn" class="bg-transparent hover:bg-indigo-500 text-indigo-700 font-semibold hover:text-white py-2 px-4 border border-indigo-500 hover:border-transparent rounded">
+          Comprar
+        </button>
+        </a>
+      {% elif self.boton_ver_mas %}
+        <a href="{{self.link}}" class="c-card block bg-white shadow-sm hover:shadow-sm rounded-sm overflow-hidden">
+        <button id="comprar_btn" class="bg-transparent hover:bg-indigo-500 text-indigo-700 font-semibold hover:text-white py-2 px-4 border border-indigo-500 hover:border-transparent rounded">
+          Ver Más
+        </button>
+        </a>
+        {% endif %}
+    </div>
+      <div class="px-3 pt-1 pb-1">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{self.tag1}}</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{self.tag2}}</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{self.tag3}}</span>
+      </div>
+    </div>
+</div>
