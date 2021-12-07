@@ -2,82 +2,78 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
-{% image self.banner_image fill-1920x820-c100  as img %}
-<div class="row align-items-md-stretch  align-items-center" style="background-image: url('{{img.url}}'); background-size:cov; height:215px">
-    <div class="col-md-12">
-      <div class="h-50 p-5 text-white rounded-3">
-        <h2>{{self.banner_title}}</h2>
-        <h4>{{self.banner_subtitle | richtext}}</h4>
-        <p>{{self.banner_description}}</p>
-      </div>
-    </div>
-    <!-- Productos Destacados -->
-  <div class="row align-items-md-stretch">
-      <div class="col-md-6">
-        <div class="h-100 p-5 text-white bg-light rounded-3">
-          <h2>{{self.banner_title}}</h2>
-          <h4>{{self.banner_subtitle | richtext}}</h4>
-          <p>{{self.banner_description}}</p>
-          {% if self.banner_cta %}
-          <button class="btn btn-outline-light" type="button">Example button</button>
-          {% endif %}
+
+  <div class="h-65 max-h-full md:max-h-screen carousel relative container mx-auto " style="max-width:1600px;">
+    {% for item in slideshow  %}
+        <div class="carousel-inner relative overflow-hidden w-full">
+            
+              <input class="carousel-open" type="radio" id="carousel-{{item.ID}}" name="carousel" aria-hidden="true" hidden="True" checked="checked">
+            <div class="carousel-item absolute opacity-0" style="height:50vh;">
+                <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('{{item.image.url}}');background-size: 600px 600px;background-repeat: no-repeat;background-position-x: -25%;background-position-y: 25%;">
+
+                    <div class="container mx-auto">
+                        <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                            <p class="text-black text-2xl my-4">{{item.nombre_producto}}</p>
+                            <a class="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">Ver Producto</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+      {% endfor %}      
+    
+            <label for="carousel-3" class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+            <label for="carousel-2" class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+            
+            
+            <label for="carousel-2" class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+            <label for="carousel-1" class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>{{self.banner_title}}</h2>
-          <h4>{{self.banner_subtitle | richtext}}</h4>
-          <p>{{self.banner_description}}</p>
-          {% if self.banner_cta %}
-          <button class="btn btn-outline-secondary" type="button">Example button</button>
-          {% endif %}
+    
+  </div>
+  <br>
+  <section class="bg-white py-8">
+
+        <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+
+            <nav id="store" class="w-full z-30 top-0 px-6 py-1">
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+
+                    <div class="flex items-center" id="store-nav-content">
+
+                        <a class="pl-3 inline-block no-underline hover:text-black" href="#">
+                            <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" />
+                            </svg>
+                        </a>
+
+                        <a class="pl-3 inline-block no-underline hover:text-black" href="{% url 'search'%}">
+                            <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
+                            </svg>
+                        </a>
+
+                    </div>
+              </div>
+            </nav>
+          {% for i in results %}        
+            <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+                <a href="#">
+                    <img class="hover:grow hover:shadow-lg" src="{{i.image.url}}">
+                    <div class="pt-3 flex items-center justify-between">
+                        <p class="">{{i.nombre_producto}}</p>
+                        <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z" />
+                          </svg>
+                    </div>
+                    <p class="pt-1 text-gray-900">${{id.precio_producto}}</p>
+                </a>
+            </div>
+           {% endfor %}
+            
+
         </div>
-      </div>
-  </div>
 
-  <div class="row align-items-md-stretch" style="padding:30px">
-    <div class="col-md-2">
-      <nav class='animated bounceInDown'>
-      	<ul>
-      		<li><a href='#profile'>Profile</a></li>
-      		<li><a href='#message'>Messages</a></li>
-      		<li class='sub-menu'><a href='#settings'>Settings<div class='fa fa-caret-down right'></div></a>
-      			<ul>
-      				<li><a href='#settings'>Account</a></li>
-      				<li><a href='#settings'>Profile</a></li>
-      				<li><a href='#settings'>Secruity & Privacy</a></li>
-      				<li><a href='#settings'>Password</a></li>
-      				<li><a href='#settings'>Notification</a></li>
-      			</ul>
-      		</li>
-      		<li class='sub-menu'><a href='#message'>Help<div class='fa fa-caret-down right'></div></a>
-      			<ul>
-      				<li><a href='#settings'>FAQ's</a></li>
-      				<li><a href='#settings'>Submit a Ticket</a></li>
-      				<li><a href='#settings'>Network Status</a></li>
-      			</ul>
-      		</li>
-      		<li><a href='#message'>Logout</a></li>
-      	</ul>
-      </nav>
-    </div>
-    <div class="col-md-10">
-      <div class="h-50 p-5 text-white rounded-3">
-        <h2>{{self.banner_title}}</h2>
-        <h4>{{self.banner_subtitle | richtext}}</h4>
-        <p>{{self.banner_description}}</p>
-      </div>
-    </div>
-  </div>
+  </section>
 
-
-{% endblock content %}
-{% block extra_js %}
-<script>
-      $('.sub-menu ul').hide();
-$(".sub-menu a").click(function () {
-  $(this).parent(".sub-menu").children("ul").slideToggle("100");
-  $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
-});
- </script>
-{% endblock %}
+  {% endblock content %}

@@ -7,16 +7,23 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from productos import views as product_views
 from search import views as search_views
+from home import views as home_views
+from carrito import views as carrito_views
+from contacto import views as contacto_views
 
 urlpatterns = [
     path('django-admin/', admin.site.urls),
-
+    path('',home_views.home,name='home'),
+    
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
-    # path('productos/', include(wagtail))
+    path('productos/', product_views.item_list, name='productos'),
     path('search/', search_views.search, name='search'),
-
+    
+    path('carrito/', carrito_views.carrito, name='carrito'),
+    path('contacto/', contacto_views.contacto, name='contacto'),
 ]
 
 
@@ -33,9 +40,12 @@ if settings.DEBUG:
     ] + urlpatterns
 
 urlpatterns = urlpatterns + [
+
+    path(r'', include('allauth.urls')),
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
     # the list:
+    # url(r'', include(wagtail_urls)),
     path("", include(wagtail_urls)),
 
     # Alternatively, if you want Wagtail pages to be served from a subpath
