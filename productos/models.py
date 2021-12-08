@@ -82,13 +82,15 @@ class producto(models.Model):
     nombre_producto = models.CharField(max_length=50,blank=False, null=False, unique=True)
     descripcion_producto = models.TextField(blank=False, null=False)
     precio_producto = models.FloatField(blank=False, null=False)
-    descuento_producto = models.FloatField(blank=True, null=True)
+    con_descuento = models.BooleanField(default=False)
+    precio_en_descuento = models.FloatField(blank=False, null=False)
     image=models.ImageField(upload_to='productos/',blank=True, null=True)
     categorias_producto = models.ManyToManyField(categoria)
     pub_date=models.DateTimeField(auto_now_add=True, blank=False, null=False)
 
     def __str__(self):
         return self.nombre_producto
+    
     # distribuidor= models.ForeignKey(distribuidor,on_delete=models.CASCADE, blank=True, null=True)
 register_snippet(categoria)
  

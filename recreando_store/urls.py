@@ -19,7 +19,7 @@ urlpatterns = [
     
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
-    path('productos/', product_views.item_list, name='productos'),
+    path('productos/', product_views.productos, name='productos'),
     path('search/', search_views.search, name='search'),
     
     path('carrito/', carrito_views.carrito, name='carrito'),

@@ -1,7 +1,32 @@
 {% extends "base.html" %}
-{% load wagtailimages_tags %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
-<div class="grid md:grid-flow-row-dense">
+<div class="grid md:grid-flow-col-dense bg-white px-2 py-2 flex items-center sm:px-6 h-25">
+
+	<div class="object contain relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg pt-3 pb-2 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
+		<div class="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3" style="background-image: url('{{featured.image.url}}'); background-size: 1600px 300px">
+
+        <h3 class="font-black text-gray-800 md:text-3xl text-xl">{{featured.nombre_producto}}</h3>
+        <p class="md:text-lg text-gray-500 text-base">{{featured.descripcion_producto}}</p>
+        {% if featured.con_descuento %}
+            <span class="grid grid-flow-col auto-cols-max pb-2">
+                <h3 class="md:text-lg text-gray-500 text-base line-through">${{featured.precio_producto}}</h3>
+                <h2 class="md:text-lg text-gray-500 text-base">${{featured.precio_en_descuento}}</h2>
+            </span>
+        {% else %}
+            <span class="grid grid-flow-col auto-cols-max pb-2">
+                <h3 class="md:text-lg text-gray-500 text-base">${{featured.precio_producto}}</h3>
+            </span>
+        {% endif %}
+        </div>
+    </div>
+    
+</div>
+
+        
+  <br>
+  <div class="grid md:grid-flow-row-dense">
     <section class="bg-white py-8">
 
         <div class="mx-auto flex items-center flex-wrap pt-4 pb-0">
@@ -66,8 +91,8 @@
     </section>
 
         
-          {% if results.has_other_pages %}
-          <div class="grid md:grid-flow-col-dense bg-white px-2 py-2 flex items-center justify-between border-t border-gray-200 sm:px-6">      
+        {% if results.has_other_pages %}
+            <div class="grid md:grid-flow-col-dense bg-white px-2 py-2 flex items-center justify-between  sm:px-6">      
                 
                 <div class="flex-1 flex justify-between ">
                 {% if results.has_previous %}
@@ -135,9 +160,9 @@
                     </nav>
                   </div>
                 </div>
-          </div>      
+            </div>      
           {%endif%}
         
-</div>
+    </div>
 
-{% endblock content %}
+  {% endblock content %}
