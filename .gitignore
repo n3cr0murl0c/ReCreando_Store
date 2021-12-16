@@ -1,1 +1,15 @@
+# Python and others
+__pycache__
+*.pyc
+.DS_Store
+*.swp
+/venv/
+/tmp/
+/.vagrant/
+/Vagrantfile.local
+node_modules/
+/npm-debug.log
+/.idea/
 .vscode
+coverage
+.python-version
