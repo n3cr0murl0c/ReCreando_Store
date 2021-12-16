@@ -6,9 +6,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 #para bold or italic
 from wagtail.core.fields import RichTextField
 
-from wagtailsvg.models import Svg
-from wagtailsvg.blocks import SvgChooserBlock
-from wagtailsvg.edit_handlers import SvgChooserPanel
 
 class HomePage(Page):
     """Home Page Model"""
@@ -37,13 +34,6 @@ class HomePage(Page):
         on_delete=models.SET_NULL,#no se quiere que nada mas se borre
         related_name="+"
     )
-    logo_image = models.ForeignKey(
-        Svg,
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+"
-    )
 
     # Si se tiene un char field, se debe agregar eso en wagtail tambien
     #Esto es wagtail, para agregar contenido en la parte de admin
@@ -53,7 +43,7 @@ class HomePage(Page):
         FieldPanel("banner_subtitle"),
         FieldPanel("banner_description"),
         ImageChooserPanel("banner_image"),
-        SvgChooserPanel("logo_image"),
+
         PageChooserPanel("banner_cta")
     ]
     #Metadata

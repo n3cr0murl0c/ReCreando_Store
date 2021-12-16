@@ -10,7 +10,7 @@ from modelcluster.fields import ParentalManyToManyField
 
 from productos import my_blocks
 from productos.models import producto
-from wagtail_svgmap import blocks
+
 # Create your models here.
 class FlexPage(Page):
     """ Flexible page class"""

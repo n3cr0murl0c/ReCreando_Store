@@ -31,8 +31,9 @@ INSTALLED_APPS = [
     'clientes',
     'contacto',
     'carrito',
+    'facturacion',
 
-    'wagtail_svgmap',
+    # 'wagtail_svgmap',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -56,7 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
-    'wagtailsvg',
+    # 'wagtailsvg',
     'wagtail.contrib.modeladmin',
     'generic_chooser',
 
@@ -174,9 +175,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Guayaquil'
 
 USE_I18N = True
 
